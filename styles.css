@@ -1,0 +1,77 @@
+body{
+    background-color:cornflowerblue;
+    background-image: url("/Users/jesse/work-april/final-project/final-project-april/pokeballs.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    background-position-x: 620px;
+    background-position-y: 10px;
+    background-size: 200px 100px;
+    font-family: 'Press Start 2P', cursive;
+    display:grid;
+    grid-template-columns: 500px 100px 500px;
+    grid-template-rows: auto;
+    
+    grid-template-areas: 
+    ".header."
+    ". . bar"
+    "main.side"
+    
+    
+}
+
+#title-picture{
+    margin-left: 500px;
+    margin-top: 80px;
+    width:300px;
+    grid-area: header;
+    align-content: center;
+}
+
+#list{
+    width: 350px;
+    grid-column:3;
+    margin-top:10px;
+    margin-right:200px;
+    background-color:lightcoral;
+    grid-area: side;
+}
+#search-bar{
+    grid-area: bar;
+    margin-top: 40px;
+    margin-right: 20px;
+}
+#search-bar label{
+    padding: 5px;
+}
+
+
+#pokemon-box{
+    margin-left: 300px;
+    margin-top: -30px;
+    grid-column:1;
+    grid-row:1 / 2;
+    grid-area: main;
+
+}
+
+.card{
+    border-radius: 8px;
+    backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 1px 112px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.list-group-item.entry{
+    background-color:lightcoral;
+}
+
+@media screen and (max-width: 700px){
+    body{
+        justify-content:center;
+        background-position-x: 420px;
+    
+    }
+    
+}
