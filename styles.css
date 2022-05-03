@@ -1,6 +1,6 @@
 body{
     background-color:cornflowerblue;
-    background-image: url("/Users/jesse/work-april/final-project/final-project-april/pokeballs.png");
+    background-image: url("./pokeballs.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     
