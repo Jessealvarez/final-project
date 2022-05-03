@@ -5,7 +5,11 @@ entries.className = 'list-group list-group-numbered';
 entries.id = 'id';
 pokeList.appendChild(entries);
 
+//array to store entries in for later
 let pokemonArray = [];
+
+
+//data display for each pokemon
 let pokepic = document.querySelector('#id-picture')
 let pokeName = document.querySelector('.card-title')
 let pokeHeight = document.querySelector('#height')
@@ -21,13 +25,11 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=898')
     
 .then(function (httpResponse){
     return httpResponse.json();
-    //console.log(httpResponse.json());
+    
 })
 .then(function (data){
    
     return data;
-
-    
 })
 
 .then(function(entryId){
@@ -37,7 +39,7 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=898')
                 return httpResponse.json();
             })
             .then(function (data) {
-                //console.log(data);
+                
                 
                 pokemonArray.push(data);
 
@@ -46,9 +48,6 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=898')
                 
 
                 entry.addEventListener('click',(e)=>{
-                    console.log('testing');
-                    
-                    
                     
                     pokepic.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${[i]}.png`
 
@@ -57,47 +56,43 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=898')
                     pokeHeight.innerHTML = "height:" + data.height + "ft";
                     pokeWeight.innerHTML = "weight:" + data.weight + "lbs";
                     
-                     // create loop so that if there is no second type, clear the html content of second type
+                     // create if statement so that if there is no second type, clear the html content of second type
                     firstType.innerHTML = data.types[0].type.name;
                     if(data.types[1]){
                     secondType.innerHTML =data.types[1].type.name;
                     }else{
-                        secondType.innerHTML = "";
+                    secondType.innerHTML = "";
                     }
                 })
 
 
-                //append each entry to the 'entries' OL
+                //append each entry to the 'entries' OL to make the clickable list
                 entries.appendChild(entry);
 
-                //fill in the data for each story on each newly created blank space on the list
+                //fill in the data for each entry on each newly created blank space on the list
                 entry.innerHTML = data.name;
                 nameClick = document.querySelectorAll('#id li');
-               //console.log(nameClick);    
+                
                 
                 let submitButton = document.querySelector('#submit-button');
                 let searchedPokemon = document.querySelector('#user-input');
                
 
 
-                //console.log(data)
+                //this is for the search bar function
                 submitButton.addEventListener('click', (e)=>{
                     e.preventDefault();
 
                     for(let i=1; i <898; i++){
-                    
-                        
-                   // console.log(pokemonArray);
-                
 
                     if(pokemonArray[i].name === searchedPokemon.value)
                     {
                     
                     
-                    pokepic.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonArray[i].name}.png`;
+                    pokepic.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonArray[i].id}.png`;
 
                     pokeName.innerHTML = pokemonArray[i].name;
-                    pokeNumber.innerHTML = "no." + pokemonArray[i].number;
+                    pokeNumber.innerHTML = "no." + pokemonArray[i].id;
                     pokeHeight.innerHTML = "height:" + pokemonArray[i].height + "ft";
                     pokeWeight.innerHTML = "weight:" + pokemonArray[i].weight + "lbs";
                    
@@ -109,8 +104,7 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=898')
                     }
                     break;
                     }
-                    // else
-                    // {pokeName.innerHtml = "Error!";}
+                    
                 }
                 })
                 
